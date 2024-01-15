@@ -36,6 +36,9 @@
     "sourceMap": true,
     /* 生成相应的 '.map' 文件，它们可以用于调试以及将编译的 JavaScript 映射回原始的 TypeScript 代码。 */
 
+    "noImplicitAny": false,
+//    允许any类型存在
+
     /* 识别@/路径 */
     "baseUrl": ".",
     "paths": {

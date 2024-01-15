@@ -1,5 +1,5 @@
 export type RES<T> = {
-    code: string
+    code: number
     msg: string
-    result: T
+    data: T
 }

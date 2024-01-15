@@ -1,9 +1,5 @@
 <template>
-  <div class="w-fit h-[70px] bg-blue-400 px-4 mr-[60px]">
 
-    <div class="text-3xl text-orange-500 leading-loose">Hellow Word</div>
-
-  </div>
 
   <el-button type="primary">Primary</el-button>
 
@@ -11,7 +7,7 @@
 
 <script setup lang="ts">
 import {ref, onMounted, onUnmounted, onBeforeMount, onBeforeUpdate, onUpdated, watch} from 'vue';
-import {user} from "@/services/user.ts";
+
 
 // 创建响应式数据
 const state = ref('Hello, Vue 3！');
@@ -53,18 +49,16 @@ watch(state, (newValue, oldValue) => {
  * 这只是一个接口调用使用案例
  */
 
-interface a {
-  name:string
-  passWord:string
-}
+// interface a {
+//   name: string
+//   passWord: string
+// }
 
-
-let get = async () =>{
- const ab =  await user<a>()
-
-  ab.result.passWord
-}
-get()
+// let get = async () => {
+//   const ab = await user<a>()
+//   ab.result.passWord
+// }
+// get()
 
 </script>
 

@@ -3,7 +3,8 @@ import type {AxiosError} from 'axios'
 import {ElMessage} from 'element-plus'
 import {userInfo} from "@/store/user/userInfo.ts";
 import {getTimeStamp} from "@/utils/time.ts";
-
+import {RES} from "@/types";
+import {errStatus} from "@/enum/errStatus.ts";
 
 
 const service = axios.create({
@@ -19,7 +20,7 @@ const timeOut = 8
 // 请求拦截器
 service.interceptors.request.use(
     config => {
-        if (user.token!=="") {
+        if (user.token !== "") {
             // 主动检测 判断token是否过期过期-现在大于1小时则过期
             if ((+new Date() - getTimeStamp()) / 1000 > 3600 * timeOut) {
 
@@ -39,16 +40,23 @@ service.interceptors.request.use(
 // 响应拦截器
 
 service.interceptors.response.use(
-    <T>(response:AxiosResponse<Promise<T>> ) => {
-
-        return Promise.resolve(response)
+    async <T>(response: AxiosResponse<Promise<T>>) => {
+        const result: RES<T> = await response.data as RES<T>;
+        console.log(result.code)
+        if (result.code === 200) {
+            return Promise.resolve(response.data)
+        } else {
+            result.msg !== "" ? ElMessage.error(result.msg) : ElMessage.error(errStatus[result.code])
+            throw new Error(result.msg)
+        }
     },
-    (error:AxiosError) => {
+    (error: AxiosError) => {
 
 
         // 处理 HTTP 网络错误
         let message = ''
         // HTTP 状态码
+        console.log(error)
         const status = error.response?.status
         switch (status) {
             case 401:
@@ -69,13 +77,12 @@ service.interceptors.response.use(
         }
 
         ElMessage({
-            message:message,
+            message: message,
             type: 'warning',
         })
         return Promise.reject(error)
     },
 )
-
 
 
 export default service

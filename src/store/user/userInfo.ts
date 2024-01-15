@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {StoreName} from "@/constant/StoreName.ts";
 import {ref} from "vue";
-
+import {Ref} from "vue/dist/vue";
 
 
 /**
@@ -9,20 +9,26 @@ import {ref} from "vue";
  * 推荐这样使得模块具有更好的扩展性
  * StoreName 类，定义模块名称
  */
-export const userInfo = defineStore( StoreName.userInfo,()=> {
- const token = ref("")
 
 
-    const setToken = (parm:string)=>{
-        token.value = parm
+
+export const userInfo = defineStore(StoreName.userInfo, () => {
+
+    const name = ref("六花")
+    const profile = ref("http://139.196.53.82:9000/user/w700d1q75cms.jpg")
+
+
+    const token: Ref<string | null> = ref(null)
+
+    const tokenChange = (userToken: string) => {
+        token.value = userToken
     }
 
-    const delToken = ()=>{
-        token.value = ""
+
+    const clearToken = () => {
+        token.value = null
     }
 
 
-
-
-    return { setToken,token,delToken }
+    return {clearToken, token, tokenChange, profile, name}
 })
