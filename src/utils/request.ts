@@ -4,7 +4,8 @@ import {ElMessage} from 'element-plus'
 import {userInfo} from "@/store/user/userInfo.ts";
 import {getTimeStamp} from "@/utils/time.ts";
 import {RES} from "@/types";
-import {errStatus} from "@/enum/errStatus.ts";
+import {errStatus, errStatusEmun} from "@/enum/errStatus.ts";
+import {useLoading} from "@/hooks/useLoading.ts";
 
 
 const service = axios.create({
@@ -13,6 +14,7 @@ const service = axios.create({
 })
 
 const user = userInfo()
+const {isHide} = useLoading()
 
 
 const timeOut = 8
@@ -28,11 +30,13 @@ service.interceptors.request.use(
             }
             // config.headers['Authorization']
         }
+
         // 必须要返回的
         return config
     },
     error => {
         console.log(error) // for debug
+        isHide()
         return Promise.reject(error)
     },
 )
@@ -43,6 +47,7 @@ service.interceptors.response.use(
     async <T>(response: AxiosResponse<Promise<T>>) => {
         const result: RES<T> = await response.data as RES<T>;
         console.log(result.code)
+        isHide()
         if (result.code === 200) {
             return Promise.resolve(response.data)
         } else {
@@ -52,33 +57,18 @@ service.interceptors.response.use(
     },
     (error: AxiosError) => {
 
+        isHide()
 
         // 处理 HTTP 网络错误
         let message = ''
         // HTTP 状态码
         console.log(error)
         const status = error.response?.status
-        switch (status) {
-            case 401:
-                message = 'token 失效，请重新登录'
-                // 这里可以触发退出的 action
-                break;
-            case 403:
-                message = '拒绝访问'
-                break;
-            case 404:
-                message = '请求地址错误'
-                break;
-            case 500:
-                message = '服务器故障'
-                break;
-            default:
-                message = '网络连接故障'
-        }
+        message = errStatusEmun(status)
 
         ElMessage({
             message: message,
-            type: 'warning',
+            type: 'error',
         })
         return Promise.reject(error)
     },
