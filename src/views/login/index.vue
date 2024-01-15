@@ -67,30 +67,49 @@ if (loginSettingStore.pswChecked) {
 const loginUserForm = ref<loginForm>()
 
 
-const onSubmit = async () => {
-  loginUserForm.value = {
-    accountNumber: loginSettingStore.account,
-    password: Password.value
-  }
-  // 用户第一次失败后再调用弹窗验证，0为调用次数为0，每次调用+1，成功登陆清空
-  // 当前登录重试次数大于0次，且当前登陆校验成功为false则开启校验
-  if (loginSettingStore.submitNum > 0 && !loginSettingStore.slideSuccess) {
-    loginSettingStore.slideFlagChange()
-    return
-  }
+/**
+ * 要开发请将另一个onSubmit注释开放这个
+ */
+// const onSubmit = async () => {
+//   loginUserForm.value = {
+//     accountNumber: loginSettingStore.account,
+//     password: Password.value
+//   }
+//   // 用户第一次失败后再调用弹窗验证，0为调用次数为0，每次调用+1，成功登陆清空
+//   // 当前登录重试次数大于0次，且当前登陆校验成功为false则开启校验
+//   if (loginSettingStore.submitNum > 0 && !loginSettingStore.slideSuccess) {
+//     loginSettingStore.slideFlagChange()
+//     return
+//   }
+//
+//   isShow()
+//   const res = await login<userTokenAndPermission>(loginUserForm.value)
+//   isHide()
+//   // 登录后重置登录次数，重置滑动成功状态，
+//   userInfoStore.tokenChange(res.data.token)
+//   loginSettingStore.changeSlideSyncFlag()
+//   loginSettingStore.submitNumReset()
+//   const toPath = router.query.redirect as string || "/index"
+//   await routes.push({path: toPath})
+// }
+//
 
-  isShow()
-  const res = await login<userTokenAndPermission>(loginUserForm.value)
-  isHide()
-  // 登录后重置登录次数，重置滑动成功状态，
-  userInfoStore.tokenChange(res.data.token)
+
+/**
+ * 如果要预览请将另一个onSubmit注释
+ * 另一个onSubmit登陆逻辑已经写好
+ */
+const onSubmit = async () => {
+
+
+  userInfoStore.tokenChange("1111")
   loginSettingStore.changeSlideSyncFlag()
   loginSettingStore.submitNumReset()
   const toPath = router.query.redirect as string || "/index"
   await routes.push({path: toPath})
-
-
 }
+
+
 /**
  * 记住密码后持续输入回调
  */

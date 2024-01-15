@@ -1,10 +1,6 @@
-
-
-
-
 ### 项目名称
 
-# Vue3 + Vite + TS + Tailwind CSS 纯净模板
+# Vue3 + Vite + TS + Tailwind CSS 后台管理系统模版
 
 - **如果您觉得项目不错请帮忙点亮Star，让更多人了解到这个项目，也方便您下次寻找这个项目**
 
@@ -31,11 +27,12 @@
 
 ## 介绍
 
-这是一个使用 Vue3、Vite、ESLint、Pinia、Tailwind CSS 和 Element-Plus 框架的纯净模板项目。下载以后就可以直接使用，它旨在为开发者提供一个干净、高效的起点，适用于快速启动新的前端项目。主要作用为：简化项目基础环境搭建，与依赖冲突的解决，以便开发者进行快速项目开发。
-
+这是一个使用 Vue3、Vite、ESLint、Pinia、Tailwind CSS 和 Element-Plus
+框架的后台项目。下载以后就可以直接使用，它旨在为开发者提供一个干净、高效的起点，适用于快速启动新的前端项目。主要作用为：简化项目基础环境搭建，与依赖冲突的解决，以便开发者进行快速项目开发。
 
 ## GitHub地址 ：
-[https://github.com/fengjun2022/Vue3-Vite-TS-Tailwind-CSS-template/tree/main]
+
+![img_1.png](img_1.png)
 
 ## 技术栈
 
@@ -130,7 +127,7 @@ csharpCopy code项目根目录
 
 如果你想为这个项目贡献代码，欢迎提交 Pull Request 或开 Issue 讨论新功能。
 
-​                                                           作者：冯骏
+​ 作者：冯骏
 
 ## 许可
 
