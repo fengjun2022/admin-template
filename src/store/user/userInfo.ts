@@ -31,4 +31,4 @@ export const userInfo = defineStore(StoreName.userInfo, () => {
 
 
     return {clearToken, token, tokenChange, profile, name}
-})
+}, {persist: true,})

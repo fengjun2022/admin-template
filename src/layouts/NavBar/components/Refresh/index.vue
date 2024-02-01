@@ -9,23 +9,21 @@
   <div class="btn">
     <el-tooltip content="刷新">
       <el-button circle @click="onRefresh">
-        <el-icon><Refresh /></el-icon>
+        <el-icon>
+          <Refresh />
+        </el-icon>
       </el-button>
     </el-tooltip>
   </div>
 </template>
 
 <script setup lang="ts">
+import { layoutRouterSetting } from "@/store/settings/layoutRouterSetting";
 
-import {layoutRouterSetting} from "@/store/settings/layoutRouterSetting.ts";
-
-
-
-    const settingsStore = layoutRouterSetting()
-    const onRefresh = () => {
-      settingsStore.setRefresh()
-    }
-
+const settingsStore = layoutRouterSetting();
+const onRefresh = () => {
+  settingsStore.setRefresh();
+};
 </script>
 
 <style scoped lang="scss">

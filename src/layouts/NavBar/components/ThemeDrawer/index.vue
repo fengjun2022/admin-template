@@ -9,15 +9,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import mittBus from '@/utils/mitt.ts'
+import { ref } from "vue";
+import mittBus from "@/utils/mitt";
 import SwitchDark from "./components/SwitchDark.vue";
 
-const drawerVisible = ref(false)
-mittBus.on('openThemeDrawer', () => {
-  drawerVisible.value = true
-
-})
+const drawerVisible = ref(false);
+mittBus.on("openThemeDrawer", () => {
+  drawerVisible.value = true;
+});
 </script>
 
 <style scoped lang="scss">

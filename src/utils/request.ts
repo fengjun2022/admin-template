@@ -46,7 +46,6 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     async <T>(response: AxiosResponse<Promise<T>>) => {
         const result: RES<T> = await response.data as RES<T>;
-        console.log(result.code)
         isHide()
         if (result.code === 200) {
             return Promise.resolve(response.data)

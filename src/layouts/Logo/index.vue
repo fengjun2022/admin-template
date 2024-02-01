@@ -1,8 +1,8 @@
 <template>
   <div class="logo-container flex-center">
-    <a  href="/">
-      <img  class="logo" alt="logo" src="/vite.svg" />
-      <h1 class="title" v-if="true">啥啥系统</h1>
+    <a href="/">
+      <img class="logo" alt="logo" src="/vite.svg"/>
+      <div class="title" v-if="true">智能WAPI管理平台</div>
     </a>
   </div>
 
@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { onMounted, onUnmounted, onBeforeMount, onBeforeUpdate, onUpdated} from 'vue';
+import {onMounted, onUnmounted, onBeforeMount, onBeforeUpdate, onUpdated} from 'vue';
 
 // 创建响应式数据
 
@@ -19,7 +19,7 @@ onBeforeMount(() => {
 
   // 在组件挂载前执行的代码
 });
-
+ 
 onMounted(() => {
 
   // 在组件挂载后执行的代码
@@ -46,6 +46,7 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @import "@/styles/variable.scss";
+
 .logo-container {
   position: relative;
   display: flex;

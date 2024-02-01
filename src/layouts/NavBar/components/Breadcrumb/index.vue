@@ -6,8 +6,8 @@
           <component :is="item.meta['icon']"></component>
         </el-icon>
         <span
-          v-if="item.redirect === 'noRedirect' || index == matched.length - 1"
-          class="no-redirect"
+            v-if="item.redirect === 'noRedirect' || index == matched.length - 1"
+            class="no-redirect"
         >
           {{ item.meta['title'] }}
         </span>
@@ -19,29 +19,26 @@
 
 <script setup lang="ts">
 
-import { useRoute, useRouter, RouteRecordRaw } from 'vue-router'
-import { computed } from 'vue'
+import {useRoute, useRouter, RouteRecordRaw} from 'vue-router'
+import {computed} from 'vue'
 
-    const route = useRoute()
-    const router = useRouter()
-    const handleLink = (item: RouteRecordRaw) => {
-      router.push({
-        path: item.path,
-      })
-    }
+const route = useRoute()
+const router = useRouter()
+const handleLink = (item: RouteRecordRaw) => {
+  router.push({
+    path: item.path,
+  })
+}
 
-    const matched = computed(()=>
-      route.matched.filter(
+const matched = computed(() =>
+    route.matched.filter(
         (item) =>
-          item.meta &&
-          item.meta["title"] &&
-          item.meta["breadcrumb"] !== false &&
-          item.children.length !== 1,
-      ),
-    )
-
-console.log(matched)
-
+            item.meta &&
+            item.meta["title"] &&
+            item.meta["breadcrumb"] !== false &&
+            item.children.length !== 1,
+    ),
+)
 
 
 </script>

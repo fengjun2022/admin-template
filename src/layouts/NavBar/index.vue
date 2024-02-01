@@ -23,53 +23,54 @@
 
 <script setup lang="ts">
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { onMounted, onUnmounted, onBeforeMount, onBeforeUpdate, onUpdated, computed} from 'vue';
-import {layoutRouterSetting} from "@/store/settings/layoutRouterSetting.ts";
-import Breadcrumb from "./components/Breadcrumb/index.vue"
-import Refresh from "./components/Refresh/index.vue"
-import ScreenFull from './components/ScreeFull/index.vue'
-import Settings from './components/Settings/index.vue'
-import User from "./components/User/index.vue"
-const settingsStore = layoutRouterSetting()
-const collapse = computed(()=>settingsStore.collapse)
-const  handleCollapse = ()=> {
-  settingsStore.changeCollapse()
-}
+import {
+  onMounted,
+  onUnmounted,
+  onBeforeMount,
+  onBeforeUpdate,
+  onUpdated,
+  computed,
+} from "vue";
+import { layoutRouterSetting } from "@/store/settings/layoutRouterSetting";
+import Breadcrumb from "./components/Breadcrumb/index.vue";
+import Refresh from "./components/Refresh/index.vue";
+import ScreenFull from "./components/ScreeFull/index.vue";
+import Settings from "./components/Settings/index.vue";
+import User from "./components/User/index.vue";
+
+const settingsStore = layoutRouterSetting();
+const collapse = computed(() => settingsStore.collapse);
+const handleCollapse = () => {
+  settingsStore.changeCollapse();
+};
 
 // 创建响应式数据
 
 // 生命周期钩子
 onBeforeMount(() => {
-
   // 在组件挂载前执行的代码
 });
 
 onMounted(() => {
-
   // 在组件挂载后执行的代码
 });
 
 onBeforeUpdate(() => {
-
   // 在组件更新前执行的代码
 });
 
 onUpdated(() => {
-
   // 在组件更新后执行的代码
 });
 
 onUnmounted(() => {
-
   // 在组件卸载前执行的代码
 });
-
-
 </script>
-
 
 <style scoped lang="scss">
 @import "@/styles/variable.scss";
+
 .nav-bar-container {
   position: relative;
   height: $base-nav-bar-height;

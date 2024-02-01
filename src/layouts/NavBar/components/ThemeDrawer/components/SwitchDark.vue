@@ -3,30 +3,26 @@
     v-model="themeConfig.isDark"
     @change="onAddDarkChange"
     inline-prompt
-    :active-action-icon="Sunny as unknown as string "
+    :active-action-icon="Sunny as unknown as string"
     :inactive-action-ico="Moon"
   />
 </template>
 
 <script setup lang="ts" name="SwitchDark">
-import { computed} from 'vue'
-import { layoutRouterSetting } from '@/store/settings/layoutRouterSetting.ts'
-import { Sunny, Moon } from '@element-plus/icons-vue'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useTheme } from '@/hooks/useTheme'
-import {ThemeConfigProps} from "@/types/store.ts";
+import { computed } from "vue";
+import { layoutRouterSetting } from "@/store/settings/layoutRouterSetting";
+import { Sunny, Moon } from "@element-plus/icons-vue";
 
+import { useTheme } from "@/hooks/useTheme";
+import { ThemeConfigProps } from "@/types/store";
 
+const settingsStore = layoutRouterSetting();
 
+const { switchDark } = useTheme();
 
-const settingsStore = layoutRouterSetting()
-
-const { switchDark } = useTheme()
-
-const themeConfig = computed(():ThemeConfigProps => settingsStore.themeConfig)
+const themeConfig = computed((): ThemeConfigProps => settingsStore.themeConfig);
 
 const onAddDarkChange = () => {
-  switchDark()
-
-}
+  switchDark();
+};
 </script>

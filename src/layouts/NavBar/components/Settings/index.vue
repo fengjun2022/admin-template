@@ -9,22 +9,22 @@
   <div class="btn">
     <el-tooltip effect="dark" content="系统设置">
       <el-button circle @click="onSetting">
-        <el-icon><Setting /></el-icon>
+        <el-icon>
+          <Setting />
+        </el-icon>
       </el-button>
     </el-tooltip>
   </div>
 </template>
 
 <script setup lang="ts">
-import mittBus from '@/utils/mitt.ts'
+import mittBus from "@/utils/mitt";
 
 const onSetting = () => {
-  console.log("触发了emit")
+  console.log("触发了emit");
   // 采用事件监听的方式打开ThemeDrawer
-  mittBus.emit('openThemeDrawer')
-
-}
-
+  mittBus.emit("openThemeDrawer");
+};
 </script>
 
 <style scoped lang="scss">
